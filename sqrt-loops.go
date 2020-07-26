@@ -18,21 +18,21 @@ func Sqrt(x float64) (float64, error) {
 		return 0, SqrtError{x}
 	}
 
-  const MAX_DELTA = 0.00000001
+	const MAX_DELTA = 0.00000001
 
-  var (
-    diff float64 = math.MaxFloat64
-    z float64 = 1.0
-    prev float64
-  )
+	var (
+		diff float64 = math.MaxFloat64
+		z float64 = 1.0
+		prev float64
+	)
 
-  for diff > MAX_DELTA {
-    prev = z
-    z -= (z*z - x) / (2*z) // Newton-Raphsons method for approximation
-    diff = math.Abs(prev - z)
-  }
+	for diff > MAX_DELTA {
+		prev = z
+		z -= (z*z - x) / (2*z) // Newton-Raphsons method for approximation
+		diff = math.Abs(prev - z)
+	}
 
-  return z, nil;
+	return z, nil;
 }
 
 
