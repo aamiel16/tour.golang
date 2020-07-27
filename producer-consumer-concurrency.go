@@ -12,6 +12,7 @@ type Order struct {
 	processed bool
 }
 
+// Specify orders as send-only channel
 func producer(orders chan<- Order) {
 	producerId := rand.Int()
 	fmt.Printf("PROD [%d]: Producer spawned \n", producerId)
@@ -32,6 +33,7 @@ func producer(orders chan<- Order) {
 	}
 }
 
+// Specify orders as received-only channel, processed as send-only channel
 func consumer(orders <-chan Order, processed chan<- Order) {
 	consumerId := rand.Int()
 	fmt.Printf("CONS [%d]: Consumer spawned \n", consumerId)
